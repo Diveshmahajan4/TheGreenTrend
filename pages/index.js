@@ -16,13 +16,13 @@ const Home = ({ products, bannerData }) => {
           <Product key={product._id} product={product} />
         ))}
       </div>
-      <FooterBanner />
+      <FooterBanner footerBanner={bannerData && bannerData[0]} />
     </div>
   );
 };
 
 export const getServerSideProps = async () => {
-  const query = '*[_type == "products"]';
+  const query = '*[_type == "product"]';
   const products = await client.fetch(query);
 
   const bannerQuery = '*[_type == "banner"]';
